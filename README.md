@@ -9,7 +9,7 @@ The following environment variables need to be set:
 - `S3_BUCKET`: s3 bucket name in the from that s3fs expects it (
 - `HOST_MOUNT_POINT`: the local host mountpoint location
 
-## Systemd Srvice
+## Systemd Service
 
 Example systemd service:
 
