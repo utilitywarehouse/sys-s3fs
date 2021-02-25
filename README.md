@@ -24,7 +24,6 @@ Environment=AWS_KEY=AKIAXXXXXXXXXX
 Environment=AWS_SECRET_KEY=XXXXXXXXXXXXXX
 Environment=S3_BUCKET=my-bucket
 Environment=HOST_MOUNT_POINT=/path/to/mountpoint
-ExecStartPre=-/bin/mkdir -p /etc/traefik/ssl
 ExecStart=/bin/sh -c 'docker run --name=s3fs --rm \
   --privileged \
   -e AWS_KEY=${AWS_KEY} \
