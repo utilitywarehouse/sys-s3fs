@@ -6,7 +6,7 @@ Builds an image that could be used to mount s3 buckets using s3fs.
 The following environment variables need to be set:
 - `AWS_KEY`: the aws key for the user that has permissions on the bucket
 - `AWS_SECRET_KEY`: the secret for above mentioned key
-- `S3_BUCKET`: s3 bucket name in the from that s3fs expects it (
+- `S3_BUCKET`: s3 bucket name in the from that s3fs expects it (BUCKET:[PATH])
 - `HOST_MOUNT_POINT`: the local host mountpoint location
 
 ## Systemd Service
