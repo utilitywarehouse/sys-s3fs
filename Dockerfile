@@ -23,7 +23,7 @@ RUN apk --no-cache add \
 FROM alpine:3.13
 ENV MNT_POINT /var/lib/s3fs
 COPY --from=build /usr/bin/s3fs /usr/bin/s3fs
-COPY run.sh run.sh
+COPY s3fs s3fs
 RUN apk --no-cache add \
       ca-certificates \
       fuse \
@@ -32,4 +32,4 @@ RUN apk --no-cache add \
       libgcc \
       libstdc++
 
-CMD ["./run.sh"]
+CMD ["./s3fs"]
