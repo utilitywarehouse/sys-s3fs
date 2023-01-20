@@ -1,26 +1,26 @@
-FROM alpine:3.13 AS build
-ARG S3FS_VERSION=v1.89
+FROM alpine:3.17 AS build
+ARG S3FS_VERSION=v1.91
 RUN apk --no-cache add \
-    ca-certificates \
-    build-base \
-    git \
-    alpine-sdk \
-    libcurl \
-    automake \
-    autoconf \
-    libxml2-dev \
-    libressl-dev \
-    fuse-dev \
-    curl-dev && \
-  git clone https://github.com/s3fs-fuse/s3fs-fuse.git && \
-  cd s3fs-fuse && \
-  git checkout tags/${S3FS_VERSION} && \
-  ./autogen.sh && \
-  ./configure --prefix=/usr && \
-  make -j && \
-  make install
+      ca-certificates \
+      build-base \
+      git \
+      alpine-sdk \
+      libcurl \
+      automake \
+      autoconf \
+      libxml2-dev \
+      libressl-dev \
+      fuse-dev \
+      curl-dev \
+      && git clone https://github.com/s3fs-fuse/s3fs-fuse.git \
+      && cd s3fs-fuse \
+      && git checkout tags/${S3FS_VERSION} \
+      && ./autogen.sh \
+      && ./configure --prefix=/usr \
+      && make -j \
+      make install
 
-FROM alpine:3.13
+FROM alpine:3.17
 ENV MNT_POINT /var/lib/s3fs
 # Make additional s3fs options an env var that can be overwritten. Default to
 # region specific url to avoid sporadic access failures:
