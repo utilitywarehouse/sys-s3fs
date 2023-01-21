@@ -9,7 +9,7 @@ RUN apk --no-cache add \
       automake \
       autoconf \
       libxml2-dev \
-      libressl-dev \
+      openssl-dev \
       fuse-dev \
       curl-dev \
       && git clone https://github.com/s3fs-fuse/s3fs-fuse.git \
@@ -18,7 +18,7 @@ RUN apk --no-cache add \
       && ./autogen.sh \
       && ./configure --prefix=/usr \
       && make -j \
-      make install
+      && make install
 
 FROM alpine:3.17
 ENV MNT_POINT /var/lib/s3fs
