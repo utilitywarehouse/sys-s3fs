@@ -24,8 +24,12 @@ Environment=AWS_KEY=AKIAXXXXXXXXXX
 Environment=AWS_SECRET_KEY=XXXXXXXXXXXXXX
 Environment=S3_BUCKET=my-bucket
 Environment=HOST_MOUNT_POINT=/path/to/mountpoint
+ExecStartPre=-/bin/mkdir -p /path/to/mountpoint
 ExecStart=/bin/sh -c 'docker run --name=s3fs --rm \
   --privileged \
+  --device /dev/fuse \
+  --cap-add SYS_ADMIN \
+  --security-opt "apparmor=unconfined" \
   -e AWS_KEY=${AWS_KEY} \
   -e AWS_SECRET_KEY=${AWS_SECRET_KEY} \
   -e S3_BUCKET=${S3_BUCKET} \
