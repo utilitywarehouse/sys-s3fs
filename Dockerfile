@@ -1,5 +1,5 @@
-FROM alpine:3.19 AS build
-ARG S3FS_VERSION=v1.93
+FROM alpine:3.20 AS build
+ARG S3FS_VERSION=v1.95
 RUN apk --no-cache add \
       ca-certificates \
       build-base \
@@ -20,7 +20,7 @@ RUN apk --no-cache add \
       && make -j \
       && make install
 
-FROM alpine:3.19
+FROM alpine:3.20
 ENV MNT_POINT /var/lib/s3fs
 # Make additional s3fs options an env var that can be overwritten. Default to
 # region specific url to avoid sporadic access failures:
